@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -17,6 +17,19 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleSmoothScroll = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      setMobileOpen(false);
+    },
+    []
+  );
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
@@ -42,6 +55,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleSmoothScroll(e, link.href)}
               className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
@@ -54,6 +68,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="#contact"
+            onClick={(e) => handleSmoothScroll(e, "#contact")}
             className={cn(buttonVariants(), "gradient-bg text-white hover:opacity-90")}
           >
             Get a Demo
@@ -81,7 +96,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
                 className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
                 {link.label}
@@ -89,7 +104,7 @@ export function Header() {
             ))}
             <Link
               href="#contact"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => handleSmoothScroll(e, "#contact")}
               className={cn(buttonVariants(), "mt-2 gradient-bg text-white hover:opacity-90")}
             >
               Get a Demo
