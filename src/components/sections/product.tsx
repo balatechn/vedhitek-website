@@ -4,6 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SlideInLeft, SlideInRight } from "@/components/motion-wrapper";
 import {
   MapPin,
   Fence,
@@ -40,7 +41,7 @@ export function ProductSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left – content */}
-          <div>
+          <SlideInLeft>
             <Badge
               variant="secondary"
               className="mb-4 bg-blue-500/10 text-blue-700 dark:text-blue-400"
@@ -78,10 +79,10 @@ export function ProductSection() {
               Request Demo
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          </div>
+          </SlideInLeft>
 
           {/* Right – product mockup */}
-          <div className="relative">
+          <SlideInRight className="relative">
             {/* Desktop mockup */}
             <div className="glow rounded-xl border border-border/50 bg-card p-2 shadow-2xl">
               <div className="rounded-lg bg-gradient-to-br from-[#1e3a5f]/20 via-background to-blue-900/20">
@@ -184,7 +185,7 @@ export function ProductSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </SlideInRight>
         </div>
       </div>
     </section>

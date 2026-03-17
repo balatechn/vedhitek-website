@@ -4,6 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight, Play, Server, Shield, Network, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCallback } from "react";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
   const handleSmoothScroll = useCallback(
@@ -42,33 +43,49 @@ export function HeroSection() {
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
         {/* Badge */}
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-400">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-400">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
           </span>
           IT Infrastructure &amp; Managed Services
-        </div>
+        </motion.div>
 
         {/* Title */}
-        <h1 className="mx-auto max-w-5xl text-center text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="mx-auto max-w-5xl text-center text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           Build Resilient{" "}
           <span className="gradient-text">IT Infrastructure.</span>
           <br className="hidden sm:block" />
           <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             Scale with Confidence.
           </span>
-        </h1>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-muted-foreground sm:text-xl">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mx-auto mt-6 max-w-2xl text-center text-lg text-muted-foreground sm:text-xl">
           End-to-end IT Infrastructure consulting — from network design and
           server management to cloud migration, cybersecurity, and 24/7
           managed services.
-        </p>
+        </motion.p>
 
         {/* CTA buttons */}
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-10 flex flex-col gap-4 sm:flex-row">
           <a
             href="#contact"
             onClick={(e) => handleSmoothScroll(e, "#contact")}
@@ -91,10 +108,14 @@ export function HeroSection() {
             <Play className="mr-2 h-4 w-4" />
             Explore Services
           </a>
-        </div>
+        </motion.div>
 
         {/* Hero visual - IT Infra Dashboard */}
-        <div className="relative mt-16 w-full max-w-5xl sm:mt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="relative mt-16 w-full max-w-5xl sm:mt-20">
           <div className="glow rounded-xl border border-border/50 bg-card p-2 shadow-2xl">
             <div className="rounded-lg bg-gradient-to-br from-[#1e3a5f]/20 via-background to-blue-900/20 p-4 sm:p-8">
               {/* Infra stat cards */}
@@ -170,7 +191,7 @@ export function HeroSection() {
           </div>
           {/* Floating glow under the card */}
           <div className="absolute -bottom-4 left-1/2 h-8 w-3/4 -translate-x-1/2 rounded-full bg-blue-500/20 blur-2xl" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

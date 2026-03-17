@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ClipboardList,
   Wrench,
@@ -8,6 +10,7 @@ import {
   HardHat,
   Rocket,
 } from "lucide-react";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 
 const services = [
   {
@@ -70,37 +73,38 @@ export function ServicesSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-            Our Services
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Comprehensive IT{" "}
-            <span className="gradient-text">Solutions</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            From infrastructure planning to deployment, we provide end-to-end
-            technology solutions tailored to your business.
-          </p>
-        </div>
+        <FadeUp>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+              Our Services
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Comprehensive IT{" "}
+              <span className="gradient-text">Solutions</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              From infrastructure planning to deployment, we provide end-to-end
+              technology solutions tailored to your business.
+            </p>
+          </div>
+        </FadeUp>
 
         {/* Service cards */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerContainer className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
-            <div
-              key={service.title}
-              className="group relative rounded-xl border border-border/50 bg-card/80 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/5"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-700 transition-colors group-hover:bg-blue-500/20 dark:text-blue-400">
-                <service.icon className="h-6 w-6" />
+            <StaggerItem key={service.title}>
+              <div className="group relative h-full rounded-xl border border-border/50 bg-card/80 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-700 transition-colors group-hover:bg-blue-500/20 dark:text-blue-400">
+                  <service.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold">{service.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="mt-4 text-base font-semibold">{service.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {service.description}
-              </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

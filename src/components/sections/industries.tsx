@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Building2,
   Hotel,
@@ -5,6 +7,7 @@ import {
   ShoppingBag,
   Briefcase,
 } from "lucide-react";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 
 const industries = [
   {
@@ -42,35 +45,36 @@ export function IndustriesSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-            Industries
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Industries We <span className="gradient-text">Serve</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Delivering tailored technology solutions across diverse industry
-            verticals.
-          </p>
-        </div>
+        <FadeUp>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+              Industries
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Industries We <span className="gradient-text">Serve</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Delivering tailored technology solutions across diverse industry
+              verticals.
+            </p>
+          </div>
+        </FadeUp>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <StaggerContainer className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {industries.map((industry) => (
-            <div
-              key={industry.label}
-              className="group flex flex-col items-center rounded-xl border border-border/50 bg-card/80 p-6 text-center backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/5"
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-500/10 text-blue-700 transition-colors group-hover:bg-blue-500/20 dark:text-blue-400">
-                <industry.icon className="h-7 w-7" />
+            <StaggerItem key={industry.label}>
+              <div className="group flex h-full flex-col items-center rounded-xl border border-border/50 bg-card/80 p-6 text-center backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/5">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-500/10 text-blue-700 transition-colors group-hover:bg-blue-500/20 dark:text-blue-400">
+                  <industry.icon className="h-7 w-7" />
+                </div>
+                <h3 className="mt-4 text-sm font-semibold">{industry.label}</h3>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  {industry.description}
+                </p>
               </div>
-              <h3 className="mt-4 text-sm font-semibold">{industry.label}</h3>
-              <p className="mt-2 text-xs text-muted-foreground">
-                {industry.description}
-              </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

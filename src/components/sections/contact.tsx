@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Globe, Send } from "lucide-react";
+import { FadeUp, SlideInLeft, SlideInRight } from "@/components/motion-wrapper";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -36,21 +37,23 @@ export function ContactSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-            Contact Us
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Get in <span className="gradient-text">Touch</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Ready to transform your business technology? Reach out to us today.
-          </p>
-        </div>
+        <FadeUp>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+              Contact Us
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Get in <span className="gradient-text">Touch</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Ready to transform your business technology? Reach out to us today.
+            </p>
+          </div>
+        </FadeUp>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-2">
           {/* Contact info */}
-          <div className="space-y-6">
+          <SlideInLeft className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold">
                 VedhiTek Technology Consulting
@@ -132,10 +135,10 @@ export function ContactSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </SlideInLeft>
 
           {/* Contact form */}
-          <div className="rounded-xl border border-border/50 bg-card/80 p-6 backdrop-blur-sm sm:p-8">
+          <SlideInRight className="rounded-xl border border-border/50 bg-card/80 p-6 backdrop-blur-sm sm:p-8">
             <h3 className="text-lg font-semibold">Send us a message</h3>
             <p className="mt-1 text-sm text-muted-foreground">
               Fill out the form below and we&apos;ll get back to you shortly.
@@ -214,7 +217,7 @@ export function ContactSection() {
                 Send Message
               </Button>
             </form>
-          </div>
+          </SlideInRight>
         </div>
       </div>
     </section>
