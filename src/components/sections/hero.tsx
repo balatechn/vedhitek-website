@@ -1,10 +1,11 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
-import { ArrowRight, Play, Server, Shield, Network, Monitor } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCallback } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function HeroSection() {
   const handleSmoothScroll = useCallback(
@@ -110,86 +111,74 @@ export function HeroSection() {
           </a>
         </motion.div>
 
-        {/* Hero visual - IT Infra Dashboard */}
+        {/* Hero visual - Image Grid */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           className="relative mt-16 w-full max-w-5xl sm:mt-20">
-          <div className="glow rounded-xl border border-border/50 bg-card p-2 shadow-2xl">
-            <div className="rounded-lg bg-gradient-to-br from-[#1e3a5f]/20 via-background to-blue-900/20 p-4 sm:p-8">
-              {/* Infra stat cards */}
-              <div className="grid gap-4 sm:grid-cols-4">
-                {[
-                  { label: "Server Uptime", value: "99.99%", icon: Server, change: "+0.01%" },
-                  { label: "Network Latency", value: "<5ms", icon: Network, change: "-12%" },
-                  { label: "Threat Blocked", value: "12.4K", icon: Shield, change: "+24%" },
-                  { label: "Endpoints Managed", value: "850+", icon: Monitor, change: "+32%" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-lg border border-border/50 bg-background/50 p-4 backdrop-blur-sm"
-                  >
-                    <div className="flex items-center gap-2">
-                      <stat.icon className="h-4 w-4 text-blue-500" />
-                      <p className="text-xs text-muted-foreground">{stat.label}</p>
-                    </div>
-                    <p className="mt-1 text-2xl font-bold">{stat.value}</p>
-                    <p className="mt-1 text-xs text-green-500">{stat.change}</p>
-                  </div>
-                ))}
-              </div>
 
-              {/* Mock infra monitoring */}
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-lg border border-border/50 bg-background/50 p-4 backdrop-blur-sm">
-                  <div className="mb-3 flex items-center justify-between">
-                    <p className="text-sm font-medium">Network Throughput</p>
-                    <p className="text-xs text-muted-foreground">Real-time</p>
-                  </div>
-                  <div className="flex h-28 items-end gap-1.5">
-                    {[65, 40, 75, 50, 85, 60, 90, 55, 80, 70].map((height, i) => (
-                      <div key={i} className="flex-1">
-                        <div
-                          className="rounded-t-sm gradient-bg opacity-80 transition-all hover:opacity-100"
-                          style={{ height: `${height}%` }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-lg border border-border/50 bg-background/50 p-4 backdrop-blur-sm">
-                  <div className="mb-3 flex items-center justify-between">
-                    <p className="text-sm font-medium">Infrastructure Health</p>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-500">
-                      <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                      All Systems Operational
-                    </span>
-                  </div>
-                  <div className="space-y-2.5">
-                    {[
-                      { name: "Cloud Servers", status: "Healthy", pct: 98 },
-                      { name: "Firewall & Security", status: "Active", pct: 100 },
-                      { name: "Backup Systems", status: "Synced", pct: 95 },
-                      { name: "Network Core", status: "Healthy", pct: 99 },
-                    ].map((item) => (
-                      <div key={item.name} className="flex items-center gap-3">
-                        <p className="w-28 text-xs text-muted-foreground truncate">{item.name}</p>
-                        <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
-                          <div
-                            className="h-full rounded-full gradient-bg"
-                            style={{ width: `${item.pct}%` }}
-                          />
-                        </div>
-                        <p className="text-xs text-green-500 w-12 text-right">{item.status}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-5 sm:grid-rows-2">
+            {/* Large image - Server Room */}
+            <div className="group relative overflow-hidden rounded-xl border border-border/50 shadow-2xl glow sm:col-span-3 sm:row-span-2">
+              <Image
+                src="/images/hero/server-room.jpg"
+                alt="Server room with blue lighting - IT Infrastructure"
+                width={800}
+                height={600}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                  IT Infrastructure
+                </span>
+                <p className="mt-2 text-lg font-semibold text-white sm:text-xl">Data Center &amp; Server Management</p>
+              </div>
+            </div>
+
+            {/* Small image - CCTV */}
+            <div className="group relative overflow-hidden rounded-xl border border-border/50 shadow-xl sm:col-span-2">
+              <Image
+                src="/images/hero/cctv-camera.jpg"
+                alt="CCTV security camera installation"
+                width={600}
+                height={400}
+                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                  Security Systems
+                </span>
+                <p className="mt-1.5 text-sm font-semibold text-white">CCTV &amp; Surveillance</p>
+              </div>
+            </div>
+
+            {/* Small image - Hotel Lobby */}
+            <div className="group relative overflow-hidden rounded-xl border border-border/50 shadow-xl sm:col-span-2">
+              <Image
+                src="/images/hero/hotel-lobby.jpg"
+                alt="Modern hotel lobby - hospitality IT setup"
+                width={600}
+                height={400}
+                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+                  Hospitality IT
+                </span>
+                <p className="mt-1.5 text-sm font-semibold text-white">Hotel &amp; Resort Networks</p>
               </div>
             </div>
           </div>
-          {/* Floating glow under the card */}
+
+          {/* Floating glow under the grid */}
           <div className="absolute -bottom-4 left-1/2 h-8 w-3/4 -translate-x-1/2 rounded-full bg-blue-500/20 blur-2xl" />
         </motion.div>
       </div>
