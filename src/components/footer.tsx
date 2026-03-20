@@ -26,7 +26,7 @@ export function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="VedhiTek Logo"
                 width={36}
                 height={36}

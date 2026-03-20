@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description:
     "Smart IT Infrastructure Consulting and Workforce Management Solutions for modern businesses. Explore AttendEase – our SaaS attendance & workforce management platform.",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/favicon.png",
+    apple: "/apple-icon.png",
   },
   keywords: [
     "IT consulting",
