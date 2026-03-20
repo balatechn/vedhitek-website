@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -36,9 +37,14 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg gradient-bg">
-            <span className="text-lg font-bold text-white">V</span>
-          </div>
+          <Image
+            src="/logo.svg"
+            alt="VedhiTek Logo"
+            width={36}
+            height={36}
+            className="h-9 w-9"
+            priority
+          />
           <div className="flex flex-col">
             <span className="text-base font-bold leading-tight tracking-tight">
               Vedhi<span className="gradient-text">Tek</span>

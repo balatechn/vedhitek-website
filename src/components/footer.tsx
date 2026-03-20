@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Linkedin, Youtube, Twitter } from "lucide-react";
+import Image from "next/image";
 
 const quickLinks = [
   { href: "#home", label: "Home" },
@@ -24,9 +25,13 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg gradient-bg">
-                <span className="text-lg font-bold text-white">V</span>
-              </div>
+              <Image
+                src="/logo.svg"
+                alt="VedhiTek Logo"
+                width={36}
+                height={36}
+                className="h-9 w-9"
+              />
               <div>
                 <span className="text-base font-bold">
                   Vedhi<span className="gradient-text">Tek</span>
